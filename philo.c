@@ -6,27 +6,11 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 00:18:40 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:48:26 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:51:15 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	philo_print(t_philo *philo, char *msg)
-{
-	int		stop;
-	long	time;
-
-	time = get_time();
-	pthread_mutex_lock(&philo->vars->stop_mutex);
-	stop = philo->vars->stop;
-	pthread_mutex_unlock(&philo->vars->stop_mutex);
-	if (stop)
-		return ;
-	pthread_mutex_lock(&philo->vars->print_mutex);
-	printf("% 10ld0 Philo %d %s\n", time - philo->vars->start_time, philo->id, msg);
-	pthread_mutex_unlock(&philo->vars->print_mutex);
-}
 
 void	philo_take_forks(t_philo *philo)
 {
@@ -67,14 +51,14 @@ void	philo_sleep(t_philo *philo)
 void	*philo_routine(void *arg)
 {
 	int		stop;
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	stop = 0;
 	if (philo->vars->philo_count == 1)
 	{
 		philo_print(philo, "has taken a fork");
-		return (NULL) ;
+		return (NULL);
 	}
 	while (!stop)
 	{

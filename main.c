@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:50:45 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:29:43 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:49:25 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	init_vars(t_vars *vars, int argc, char **argv)
 	if (parse_int(argv[1], &vars->philo_count)
 		|| parse_int(argv[2], &vars->time_to_die)
 		|| parse_int(argv[3], &vars->time_to_eat)
-	  	|| parse_int(argv[4], &vars->time_to_sleep))
+		|| parse_int(argv[4], &vars->time_to_sleep))
 		return (0);
 	if (argc == 6)
 	{
@@ -57,7 +57,6 @@ int	init_vars(t_vars *vars, int argc, char **argv)
 	init_philos(vars);
 	return (1);
 }
-
 
 int	main(int argc, char **argv)
 {

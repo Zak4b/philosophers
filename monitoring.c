@@ -6,13 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:15:58 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:26:31 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:50:53 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int		check_death(t_philo *philo)
+int	check_death(t_philo *philo)
 {
 	int	dead;
 
@@ -21,6 +21,7 @@ int		check_death(t_philo *philo)
 	pthread_mutex_unlock(&philo->meal_mutex);
 	return (dead);
 }
+
 int	check_meals(t_vars *vars, t_philo *philo)
 {
 	int	result;
