@@ -6,29 +6,32 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:02:53 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 15:57:43 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:28:27 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *nptr)
+int	parse_int(const char *nptr, int *result)
 {
-	long	result;
-	int		sign;
-
-	if (!nptr)
-		return (0);
-	result = 0;
-	sign = 1;
+	if (!nptr || !result)
+		return (EXIT_FAILURE);
+	*result = 0;
 	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
 		if (*(nptr++) == '-')
-			sign = -1;
+			return (EXIT_FAILURE);
 	while (*nptr >= '0' && *nptr <= '9')
-		result = result * 10 + (*(nptr++) - '0');
-	return ((int)result * sign);
+	{
+		*result = *result * 10 + (*(nptr++) - '0');
+		if (*result > __INT_MAX__)
+			return (EXIT_FAILURE);
+	}
+	if (*nptr)
+		return (EXIT_FAILURE);
+	else
+		return (EXIT_SUCCESS);
 }
 
 long	get_time(void)

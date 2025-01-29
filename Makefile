@@ -9,6 +9,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 SOURCES = \
         main.c \
+		monitoring.c \
 		philo.c \
 		utils.c
 
@@ -17,7 +18,7 @@ OBJS = $(addprefix $(OBJDIR)/, $(SOURCES:.c=.o))
 
 $(NAME): $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Compiling $(NAME)...$(RESET)"
-	@cc $(FLAGS) $(OBJS) -o $(NAME) $(INC) $(LIB)
+	@cc $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Compilation finished successfully!$(RESET)"
 
 all: $(NAME)
