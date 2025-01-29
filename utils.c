@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:02:53 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:51:24 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:58:29 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	philo_print(t_philo *philo, char *msg)
 		return ;
 	pthread_mutex_lock(&philo->vars->print_mutex);
 	printf("% 10ld0 Philo %d %s\n",
-		time - philo->vars->start_time, philo->id, msg);
+		time - philo->vars->start_time, philo->id + 1, msg);
 	pthread_mutex_unlock(&philo->vars->print_mutex);
 }
