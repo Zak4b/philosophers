@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:50:45 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 17:32:10 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 19:57:51 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ void	init_vars(t_vars *vars, int argc, char **argv)
 
 int		check_death(t_philo *philo)
 {
-	long	deadline;
+	int	dead;
 
-	deadline = philo->last_meal + philo->vars->time_to_die;
-	printf("%ld", deadline);
-	return (get_time() > deadline);
+	pthread_mutex_lock(&philo->meal_mutex);
+	dead = get_time() > philo->last_meal + philo->vars->time_to_die;
+	pthread_mutex_unlock(&philo->meal_mutex);
+	return (dead);
 }
 int	check_meals(t_vars *vars, t_philo *philo)
 {
@@ -69,7 +70,7 @@ void	monitor(t_vars *vars)
 	{
 		usleep(100);
 		i = 0;
-		meals_ok = 1;
+		meals_ok = 0;
 		while (i < vars->philo_count)
 		{
 			if (check_death(vars->philos[i]))
@@ -86,12 +87,10 @@ void	monitor(t_vars *vars)
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
-	int		stop;
 
 	if (argc < 5 || argc > 6)
 		return (printf(USAGE, argv[0]), EXIT_FAILURE);
 	init_vars(&vars, argc, argv);
-	stop = 0;
 	monitor(&vars);
 	pthread_mutex_lock(&vars.stop_mutex);
 	vars.stop = 1;
