@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:02:53 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:28:27 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:37:32 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ long	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+void	sleep_ms(int duration)
+{
+	long	start;
+
+	start = get_time();
+	while (get_time() < start + duration)
+		usleep(1000);
 }
 
 void	free_all(t_vars *vars)

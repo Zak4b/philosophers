@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:50:48 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:17:04 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:36:31 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 
 int		parse_int(const char *nptr, int *result);
 long	get_time(void);
+void	sleep_ms(int duration);
 void	free_all(t_vars *vars);
 
 void	*philo_routine(void *arg);

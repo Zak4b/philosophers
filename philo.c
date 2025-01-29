@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 00:18:40 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 19:44:06 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:37:19 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	philo_eat(t_philo *philo)
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->meal_mutex);
 	philo_print(philo, "is eating");
-	usleep(philo->vars->time_to_eat * 1000);
+	sleep_ms(philo->vars->time_to_eat);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }
@@ -61,7 +61,7 @@ void	philo_eat(t_philo *philo)
 void	philo_sleep(t_philo *philo)
 {
 	philo_print(philo, "is sleeping");
-	usleep(philo->vars->time_to_sleep * 1000);
+	sleep_ms(philo->vars->time_to_sleep);
 }
 
 void	*philo_routine(void *arg)
