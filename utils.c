@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:02:53 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 00:43:47 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:57:43 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *nptr)
 	return ((int)result * sign);
 }
 
-int	get_time(void)
+long	get_time(void)
 {
 	struct timeval	tv;
 
@@ -47,11 +47,11 @@ void	free_all(t_vars *vars)
 	while (i < vars->philo_count)
 	{
 		pthread_join(vars->philos[i]->thread, NULL);
+		pthread_mutex_destroy(&vars->philos[i]->meal_mutex);
 		free(vars->philos[i++]);
 	}
 	free(vars->forks);
 	free(vars->philos);
-	pthread_mutex_destroy(&vars->meal_goal_mutex);
 	pthread_mutex_destroy(&vars->stop_mutex);
 	pthread_mutex_destroy(&vars->print_mutex);
 }

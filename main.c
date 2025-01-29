@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:50:45 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 00:40:47 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:55:54 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,17 @@ void	init_vars(t_vars *vars, int argc, char **argv)
 	vars->philos = malloc(sizeof(t_philo) * vars->philo_count);
 	pthread_mutex_init(&vars->stop_mutex, NULL);
 	pthread_mutex_init(&vars->print_mutex, NULL);
-	pthread_mutex_init(&vars->meal_goal_mutex, NULL);
 	vars->forks = malloc(sizeof(pthread_mutex_t) * vars->philo_count);
 	i = 0;
 	while (i < vars->philo_count)
 		pthread_mutex_init(&vars->forks[i++], NULL);
+	vars->start_time = get_time();
 	i = 0;
 	while (i < vars->philo_count)
 	{
 		vars->philos[i] = new_philo(vars, i);
 		i++;
 	}
-	vars->start_time = get_time();
 }
 
 int	main(int argc, char **argv)
