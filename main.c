@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:50:45 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:49:25 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 21:03:36 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,6 @@ int	main(int argc, char **argv)
 	if (!init_vars(&vars, argc, argv))
 		return (printf("Error, Invalid argument\n"), EXIT_FAILURE);
 	monitor(&vars);
-	pthread_mutex_lock(&vars.stop_mutex);
-	vars.stop = 1;
-	pthread_mutex_unlock(&vars.stop_mutex);
 	free_all(&vars);
 	return (EXIT_SUCCESS);
 }
