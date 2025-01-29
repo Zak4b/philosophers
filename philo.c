@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 00:18:40 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:37:19 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/29 20:48:26 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	stop = 0;
+	if (philo->vars->philo_count == 1)
+	{
+		philo_print(philo, "has taken a fork");
+		return (NULL) ;
+	}
 	while (!stop)
 	{
 		philo_take_forks(philo);
