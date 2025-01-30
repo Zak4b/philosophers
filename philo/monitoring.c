@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:15:58 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 21:46:45 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/30 11:09:08 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	check_death(t_philo *philo)
 		pthread_mutex_lock(&philo->vars->stop_mutex);
 		philo->vars->stop = 1;
 		pthread_mutex_unlock(&philo->vars->stop_mutex);
-		printf("% 10ld0 Philo %d \033[31mdied\033[0m\n",
-			get_time() - philo->vars->start_time, philo->id + 1);
+		printf("%ld %d \033[31mdied\033[0m\n",
+			get_time(), philo->id + 1);
 	}
 	return (dead);
 }
