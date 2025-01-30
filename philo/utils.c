@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:02:53 by asene             #+#    #+#             */
-/*   Updated: 2025/01/30 11:09:12 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/30 11:28:26 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sleep_ms(int duration)
 
 	start = get_time();
 	while (get_time() < start + duration)
-		usleep(1000);
+		usleep(500);
 }
 
 void	free_all(t_vars *vars)

@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 00:18:40 by asene             #+#    #+#             */
-/*   Updated: 2025/01/29 20:51:15 by asene            ###   ########.fr       */
+/*   Updated: 2025/01/30 11:36:01 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	philo_take_forks(t_philo *philo)
 {
-	if (philo->id % 2)
+	if (philo->id % 2 == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		philo_print(philo, "has taken a fork");
